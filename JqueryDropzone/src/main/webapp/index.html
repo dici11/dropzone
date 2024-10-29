@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
+<link rel="stylesheet"
+	href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css"
+	type="text/css" />
+</head>
+<body>
+	fasdfafsd
+	<form action="/JqueryDropzone/sds/file/upload" class="dropzone"
+		id="my-great-dropzone"></form>
+
+	<script>
+		Dropzone.options.myGreatDropzone = { // camelized version of the `id`
+			paramName : "file", // The name that will be used to transfer the file
+			maxFilesize : 10000, // MB
+			init : function() {
+				this.on("sending", function(file, xhr, formData) {
+					formData.append("param", "param_test");
+					console.log(formData)
+				});
+			},
+			accept : function(file, done) {
+				if (file.name == "justinbieber.jpg") {
+					done("Naha, you don't.");
+				} else {
+					done();
+				}
+			}
+		};
+	</script>
+</body>
+</html>
